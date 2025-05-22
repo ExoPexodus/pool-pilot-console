@@ -32,16 +32,13 @@ services:
     command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
     restart: unless-stopped
 
-  # Frontend - Now properly builds using Node
+  # Frontend - No volumes
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
     depends_on:
       - backend
     restart: unless-stopped
