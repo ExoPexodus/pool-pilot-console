@@ -1,0 +1,25 @@
+
+# API Framework
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.4.2
+python-dotenv==0.21.1
+
+# Database
+sqlalchemy==1.4.49
+alembic==1.14.0
+pymysql==1.1.0
+cryptography==42.0.8
+
+# Authentication
+python-jose==3.3.0
+passlib==1.7.4
+bcrypt==4.0.1
+python-multipart==0.0.6
+
+# Utilities
+pyyaml==6.0.1
+requests==2.31.0
+
+# OCI SDK (for validation)
+oci==2.114.0
