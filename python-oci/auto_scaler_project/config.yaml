@@ -1,0 +1,17 @@
+pools:
+  - instance_pool_id: "ocid1.instancepool.oc1.ap-mumbai-1.aaaaaaaa4xvc4uehki2wh2fqk7m47t7j6qy4f75swhzcli7ofszrxxswwaea"
+    compartment_id: "ocid1.compartment.oc1..aaaaaaaatey3m2mka7tfwmm2syaa4lquyeqdqem36qfxyfghxylquiq3qx5q"
+    region: "india-west"
+    monitoring_method: "oci"
+    prometheus_url: "http://localhost:9090"
+    cpu_threshold: {min: 30, max: 75}
+    ram_threshold: {min: 20, max: 75}
+    scaling_limits: {min: 1,max: 10}
+    scheduler_max_instances: 3
+    schedules:
+      - start_time: "05:30"
+        end_time: "05:50"
+      - start_time: "6:00"
+        end_time: "7:00"
+      - start_time: "7:40"
+        end_time: "8:00"
