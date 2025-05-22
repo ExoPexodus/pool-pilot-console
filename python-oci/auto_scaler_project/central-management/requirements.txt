@@ -9,7 +9,7 @@ python-dotenv==0.21.1
 sqlalchemy==1.4.49
 alembic==1.14.0
 pymysql==1.1.0
-cryptography==42.0.8
+cryptography==41.0.7  # Changed from 42.0.8 to 41.0.7 to be compatible with OCI SDK
 
 # Authentication
 python-jose==3.3.0
