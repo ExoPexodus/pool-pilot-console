@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../utils/api';
 
 // Types
 interface NodeSummary {
@@ -34,9 +34,9 @@ const Dashboard: React.FC = () => {
       try {
         setLoading(true);
         
-        // This would be replaced with actual API calls
-        // const nodesResponse = await axios.get('/api/nodes');
-        // const metricsResponse = await axios.get('/api/metrics/summary');
+        // In a real app we would use apiClient instead of mocking data
+        // const nodesResponse = await apiClient.get('/nodes');
+        // const metricsResponse = await apiClient.get('/metrics/summary');
         
         // Mock data for now
         const mockNodes: NodeSummary[] = [
@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
   return (
     <div>
       <div className="header">
-        <h1>Dashboard</h1>
+        <h1 className="text-2xl font-bold">Dashboard</h1>
         <div>
           <Link to="/nodes/new" className="btn btn-primary">Add Node</Link>
         </div>
@@ -108,9 +108,11 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="card">
-        <h2>Recent Nodes</h2>
+        <h2 className="text-xl font-semibold mb-4">Recent Nodes</h2>
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center p-6">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-teal-400 border-t-transparent"></div>
+          </div>
         ) : (
           <table className="table">
             <thead>
@@ -140,6 +142,26 @@ const Dashboard: React.FC = () => {
             </tbody>
           </table>
         )}
+      </div>
+
+      {/* Add a simple chart section as placeholder */}
+      <div className="charts-container">
+        <div className="chart-card">
+          <div className="chart-header">
+            <h3>CPU Usage</h3>
+          </div>
+          <div className="flex items-center justify-center h-64 text-gray-400">
+            <p>Chart Placeholder</p>
+          </div>
+        </div>
+        <div className="chart-card">
+          <div className="chart-header">
+            <h3>Memory Usage</h3>
+          </div>
+          <div className="flex items-center justify-center h-64 text-gray-400">
+            <p>Chart Placeholder</p>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from '../utils/api';
 
 interface InstancePool {
   id: number;
@@ -24,8 +24,8 @@ const InstancePools: React.FC = () => {
       try {
         setLoading(true);
         
-        // This would be replaced with actual API call
-        // const response = await axios.get('/api/instance-pools');
+        // In a real app we would use apiClient instead of mocking data
+        // const response = await apiClient.get('/instance-pools');
         
         // Mock data for now
         const mockPools: InstancePool[] = [
@@ -89,12 +89,14 @@ const InstancePools: React.FC = () => {
   return (
     <div>
       <div className="header">
-        <h1>Instance Pools</h1>
+        <h1 className="text-2xl font-bold">Instance Pools</h1>
       </div>
       
       <div className="card">
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center p-6">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-teal-400 border-t-transparent"></div>
+          </div>
         ) : (
           <table className="table">
             <thead>
@@ -110,17 +112,17 @@ const InstancePools: React.FC = () => {
             <tbody>
               {pools.map(pool => (
                 <tr key={pool.id}>
-                  <td>{pool.display_name}</td>
+                  <td className="font-medium">{pool.display_name}</td>
                   <td>{pool.region}</td>
                   <td>{pool.node_hostname}</td>
-                  <td>{pool.current_instances}</td>
+                  <td className="text-center font-medium text-teal-400">{pool.current_instances}</td>
                   <td>{pool.min_instances} - {pool.max_instances}</td>
                   <td>{new Date(pool.last_scaled_at).toLocaleString()}</td>
                 </tr>
               ))}
               {pools.length === 0 && (
                 <tr>
-                  <td colSpan={6} style={{ textAlign: 'center' }}>
+                  <td colSpan={6} className="text-center py-4">
                     No instance pools found.
                   </td>
                 </tr>

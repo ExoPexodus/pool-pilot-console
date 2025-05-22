@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../utils/api';
 
 interface Node {
   node_id: string;
@@ -21,8 +21,8 @@ const Nodes: React.FC = () => {
       try {
         setLoading(true);
         
-        // This would be replaced with actual API call
-        // const response = await axios.get('/api/nodes');
+        // In a real app we would use apiClient instead of mocking data
+        // const response = await apiClient.get('/nodes');
         
         // Mock data for now
         const mockNodes: Node[] = [
@@ -70,13 +70,15 @@ const Nodes: React.FC = () => {
   return (
     <div>
       <div className="header">
-        <h1>Autoscaler Nodes</h1>
+        <h1 className="text-2xl font-bold">Autoscaler Nodes</h1>
         <Link to="/nodes/new" className="btn btn-primary">Register New Node</Link>
       </div>
       
       <div className="card node-list">
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center p-6">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-teal-400 border-t-transparent"></div>
+          </div>
         ) : (
           <table className="table">
             <thead>
@@ -110,7 +112,7 @@ const Nodes: React.FC = () => {
               ))}
               {nodes.length === 0 && (
                 <tr>
-                  <td colSpan={5} style={{ textAlign: 'center' }}>
+                  <td colSpan={5} className="text-center py-4">
                     No nodes found. Register a new node to get started.
                   </td>
                 </tr>
