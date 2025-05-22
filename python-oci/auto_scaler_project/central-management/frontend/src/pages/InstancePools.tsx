@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import apiClient from '../utils/api';
 
 interface InstancePool {
   id: number;
@@ -23,9 +22,6 @@ const InstancePools: React.FC = () => {
     const fetchInstancePools = async () => {
       try {
         setLoading(true);
-        
-        // In a real app we would use apiClient instead of mocking data
-        // const response = await apiClient.get('/instance-pools');
         
         // Mock data for now
         const mockPools: InstancePool[] = [

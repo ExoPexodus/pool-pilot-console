@@ -23,18 +23,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Check for existing session on load
     const checkAuth = async () => {
       const token = localStorage.getItem('authToken');
+      const username = localStorage.getItem('username');
       
-      if (token) {
+      if (token && username) {
         try {
-          // Use the token to validate session with backend
-          const response = await axios.get('/api/auth/me', {
-            headers: { Authorization: `Bearer ${token}` }
-          });
-          
-          setUser({ username: response.data.username });
+          // In a real app, we would validate the token with the server
+          // For now, we'll just set the user based on local storage
+          setUser({ username });
         } catch (error) {
           console.error('Authentication failed:', error);
           localStorage.removeItem('authToken');
+          localStorage.removeItem('username');
         }
       }
       
@@ -46,25 +45,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (username: string, password: string) => {
     try {
-      // In a real app, this would connect to your backend
-      const response = await axios.post('/api/auth/token', new URLSearchParams({
-        'username': username,
-        'password': password,
-      }), {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      });
-      
-      const { access_token } = response.data;
-      
-      // Store the token
-      localStorage.setItem('authToken', access_token);
-      
-      // Set the user
-      setUser({ username });
-      
-      return true;
+      // In a production app, this would make a real API call
+      // For development, we'll use mock authentication
+      if (username === 'admin' && password === 'admin') {
+        const mockToken = 'mock-jwt-token-' + Math.random().toString(36).substring(2);
+        
+        // Store the token and user info
+        localStorage.setItem('authToken', mockToken);
+        localStorage.setItem('username', username);
+        
+        // Set the user
+        setUser({ username });
+        
+        return true;
+      }
+      return false;
     } catch (error) {
       console.error('Login failed:', error);
       return false;
@@ -73,6 +68,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('username');
     setUser(null);
   };
 

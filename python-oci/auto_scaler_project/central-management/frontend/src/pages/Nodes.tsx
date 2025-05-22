@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import apiClient from '../utils/api';
 
 interface Node {
   node_id: string;
@@ -20,9 +19,6 @@ const Nodes: React.FC = () => {
     const fetchNodes = async () => {
       try {
         setLoading(true);
-        
-        // In a real app we would use apiClient instead of mocking data
-        // const response = await apiClient.get('/nodes');
         
         // Mock data for now
         const mockNodes: Node[] = [
@@ -74,7 +70,7 @@ const Nodes: React.FC = () => {
         <Link to="/nodes/new" className="btn btn-primary">Register New Node</Link>
       </div>
       
-      <div className="card node-list">
+      <div className="card">
         {loading ? (
           <div className="flex items-center justify-center p-6">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-teal-400 border-t-transparent"></div>

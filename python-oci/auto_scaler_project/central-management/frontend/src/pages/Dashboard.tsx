@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import apiClient from '../utils/api';
 
 // Types
 interface NodeSummary {
@@ -33,10 +32,6 @@ const Dashboard: React.FC = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        
-        // In a real app we would use apiClient instead of mocking data
-        // const nodesResponse = await apiClient.get('/nodes');
-        // const metricsResponse = await apiClient.get('/metrics/summary');
         
         // Mock data for now
         const mockNodes: NodeSummary[] = [
@@ -144,7 +139,6 @@ const Dashboard: React.FC = () => {
         )}
       </div>
 
-      {/* Add a simple chart section as placeholder */}
       <div className="charts-container">
         <div className="chart-card">
           <div className="chart-header">

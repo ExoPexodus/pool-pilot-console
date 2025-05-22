@@ -38,8 +38,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
-      <div className="p-8 rounded-lg shadow-lg bg-gray-800 w-full max-w-md">
+    <div className="flex items-center justify-center min-h-screen bg-[#0f1523]">
+      <div className="p-8 rounded-lg shadow-lg bg-[#1a1f2e] border border-[#2a3042] w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-teal-400 mb-2">AutoScaler</h1>
           <p className="text-gray-400">Central Management Console</p>
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full px-3 py-2 bg-[#131722] border border-[#2a3042] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
               placeholder="admin"
             />
           </div>
@@ -77,8 +77,8 @@ const Login: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
-              placeholder="admin"
+              className="w-full px-3 py-2 bg-[#131722] border border-[#2a3042] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+              placeholder="••••••••"
             />
             <p className="mt-1 text-xs text-gray-400">
               Default credentials: admin / admin
