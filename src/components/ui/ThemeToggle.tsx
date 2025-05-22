@@ -1,12 +1,19 @@
 
 import { Button } from "@/components/ui/button";
-import { Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const ThemeToggle = () => {
-  // For now this is just a visual placeholder
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <Button variant="ghost" size="icon">
-      <Sun className="h-5 w-5" />
+    <Button variant="ghost" size="icon" onClick={toggleTheme}>
+      {theme === 'dark' ? (
+        <Sun className="h-5 w-5" />
+      ) : (
+        <Moon className="h-5 w-5" />
+      )}
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
 };
