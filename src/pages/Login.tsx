@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 
@@ -11,15 +10,17 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError('');
     
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 800));
       
       // Simple mock authentication (replace with actual API call)
       if (username === 'admin' && password === 'admin') {
@@ -28,10 +29,10 @@ const Login = () => {
         toast.success('Login successful');
         navigate('/dashboard');
       } else {
-        toast.error('Invalid username or password');
+        setError('Invalid username or password');
       }
     } catch (error) {
-      toast.error('Login failed');
+      setError('Login failed. Please try again.');
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -39,50 +40,62 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-bold tracking-tight">
-            <span className="text-gradient">AutoScaler</span> Management
-          </CardTitle>
-          <CardDescription>
-            Enter your credentials to access the dashboard
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={handleLogin}>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="username">Username</Label>
-              <Input
-                id="username"
-                placeholder="admin"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <p className="text-xs text-muted-foreground">
-                Default: username: admin, password: admin
-              </p>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Logging in..." : "Log in"}
-            </Button>
-          </CardFooter>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#0f1523] p-4">
+      <div className="w-full max-w-md">
+        <div className="text-left mb-6">
+          <h1 className="text-4xl font-bold text-white mb-2">AutoScaler</h1>
+          <p className="text-gray-400">Central Management Console</p>
+        </div>
+        
+        {error && (
+          <div className="mb-4 p-3 bg-red-900/30 border border-red-800 text-red-200 rounded-md text-sm">
+            {error}
+          </div>
+        )}
+        
+        <form onSubmit={handleLogin} className="bg-[#1a1f2e] border border-gray-800 rounded-md p-6 shadow-lg">
+          <div className="mb-4">
+            <Label htmlFor="username" className="text-gray-300 mb-1">
+              Username
+            </Label>
+            <Input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className="bg-[#131722] border-gray-700 text-white"
+              placeholder="admin"
+            />
+          </div>
+          
+          <div className="mb-6">
+            <Label htmlFor="password" className="text-gray-300 mb-1">
+              Password
+            </Label>
+            <Input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="bg-[#131722] border-gray-700 text-white"
+              placeholder="••••••••"
+            />
+            <p className="mt-2 text-xs text-gray-500">
+              Default credentials: admin / admin
+            </p>
+          </div>
+          
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+          >
+            {isLoading ? 'Signing in...' : 'Sign In'}
+          </Button>
         </form>
-      </Card>
+      </div>
     </div>
   );
 };

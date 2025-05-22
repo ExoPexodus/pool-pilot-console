@@ -53,6 +53,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background-color: #0f1523;
   }
 
   html {
@@ -81,4 +82,29 @@
   .text-gradient {
     @apply bg-gradient-to-r from-teal-400 to-teal-200 bg-clip-text text-transparent;
   }
+}
+
+/* Additional styling for the AutoScaler Management Console */
+.autoscaler-dark-bg {
+  background-color: #0f1523;
+}
+
+.autoscaler-card {
+  background-color: #1a1f2e;
+  border: 1px solid #2a3042;
+  border-radius: 0.5rem;
+}
+
+.autoscaler-input {
+  background-color: #131722;
+  border-color: #2a3042;
+  color: white;
+}
+
+.autoscaler-button {
+  background-color: #14b8a6;
+}
+
+.autoscaler-button:hover {
+  background-color: #0d9488;
 }

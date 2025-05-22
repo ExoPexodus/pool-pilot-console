@@ -1,9 +1,9 @@
 
-/* Dark theme with teal accents */
+/* Dark theme with teal accents for AutoScaler Management Console */
 
 body {
-  background-color: #111827; /* gray-900 */
-  color: #f9fafb; /* gray-50 */
+  background-color: #0f1523; /* Dark blue background */
+  color: #f9fafb;
   margin: 0;
 }
 
@@ -15,7 +15,7 @@ body {
   height: 40px;
 }
 
-/* Custom Classes with the new theme */
+/* Status Indicators */
 .status-indicator {
   display: inline-block;
   width: 10px;
@@ -36,23 +36,23 @@ body {
   background-color: #ef4444; /* red-500 */
 }
 
-/* Updated Card Styling */
+/* Card Styling */
 .card {
-  background-color: #1f2937; /* gray-800 */
+  background-color: #1a1f2e; /* Darker blue for cards */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin-bottom: 20px;
-  border: 1px solid #374151; /* gray-700 */
+  border: 1px solid #2a3042; /* Subtle border */
 }
 
 /* Metric Card Styling */
 .metric-card {
-  background-color: #1f2937; /* gray-800 */
+  background-color: #1a1f2e;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border: 1px solid #374151; /* gray-700 */
+  border: 1px solid #2a3042;
   transition: transform 0.2s;
 }
 
@@ -82,22 +82,22 @@ body {
 }
 
 .table th {
-  background-color: #374151; /* gray-700 */
+  background-color: #212637; /* Slightly lighter than card bg */
   padding: 12px 15px;
   text-align: left;
   font-weight: 600;
   color: #f9fafb; /* gray-50 */
-  border-bottom: 2px solid #4b5563; /* gray-600 */
+  border-bottom: 2px solid #2a3042;
 }
 
 .table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #4b5563; /* gray-600 */
+  border-bottom: 1px solid #2a3042;
 }
 
 .table tr:hover {
-  background-color: #374151; /* gray-700 */
+  background-color: #212637;
 }
 
 /* Button Styling */
@@ -127,6 +127,7 @@ body {
   border-color: #0d9488; /* teal-600 */
 }
 
+/* Grid layouts */
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -153,8 +154,8 @@ body {
   font-size: 0.875rem;
   line-height: 1.5;
   color: #f9fafb; /* gray-50 */
-  background-color: #374151; /* gray-700 */
-  border: 1px solid #4b5563; /* gray-600 */
+  background-color: #131722; /* Darker input background */
+  border: 1px solid #2a3042;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -176,6 +177,7 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Chart layouts */
 .charts-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -184,11 +186,11 @@ a:hover {
 }
 
 .chart-card {
-  background-color: #1f2937; /* gray-800 */
+  background-color: #1a1f2e;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border: 1px solid #374151; /* gray-700 */
+  border: 1px solid #2a3042;
   min-height: 300px;
 }
 
@@ -202,7 +204,7 @@ a:hover {
 .chart-header h3 {
   margin: 0;
   font-weight: 500;
-  color: #f9fafb; /* gray-50 */
+  color: #f9fafb;
 }
 
 /* Header Styling */
@@ -216,5 +218,73 @@ a:hover {
 .header h1 {
   margin: 0;
   font-size: 1.5rem;
-  color: #f9fafb; /* gray-50 */
+  color: #f9fafb;
+}
+
+/* Login page specific styles */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: #0f1523;
+}
+
+.login-form {
+  background-color: #1a1f2e;
+  border: 1px solid #2a3042;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+  color: #f9fafb;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.login-input {
+  background-color: #131722;
+  border-color: #2a3042;
+  color: #f9fafb;
+}
+
+.login-error {
+  background-color: rgba(220, 38, 38, 0.2);
+  border: 1px solid #dc2626;
+  color: #fca5a5;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.login-button {
+  background-color: #14b8a6;
+  color: white;
+  width: 100%;
+  padding: 0.625rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #0d9488;
+}
+
+.login-button:disabled {
+  background-color: #0f766e;
+  cursor: not-allowed;
 }
